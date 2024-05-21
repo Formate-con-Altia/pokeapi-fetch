@@ -4,7 +4,7 @@ Implementa un selector de pokemon que, al escoger el nombre de un pokemon, se re
 
 Además, al hacer clic en el botón **Change to Shiny** se debe cargar la imagen "shiny" del pokemon. Utiliza la [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch) para realizar la llamada,
 
-Aquí tienes un [vídeo demostrativo](https://oscarm.tinytake.com/tt/NTQwMTg4N18xNjg5Njg5NQ) de lo que se quiere conseguir.
+Aquí tienes una [DEMO](https://formate-con-altia.github.io/pokeapi-fetch/)
 
 ## BONUS
 
