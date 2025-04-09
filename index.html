@@ -15,7 +15,7 @@
             <img class="card-img-top d-none" src="" alt="Card image cap" data-shiny-url="">
             <div class="card-body">
                 <h5 class="card-title" style=" text-transform: capitalize;">Lorepokemon</h5>
-                <a href="#" class="btn btn-success">Change to Shiny</a>
+                <a href="#" id="change-shiny" class="btn btn-success">Change to Shiny</a>
             </div>
         </div>
     </div>
@@ -35,8 +35,14 @@
     // 1. Cuando cambie el valor del selector, tenemos que detectar que opción hemos escogido. Probad que sois capaces de recuperar el valor seleccionado por el usuario con un console.log
     const selectPokemon = document.querySelector('#select-pokemon');
 
+    const btnChangeShiny = document.querySelector('#change-shiny');
+
     const titlePokemon = document.querySelector('.card-title');
     const imgPokemon = document.querySelector(".card-img-top");
+
+    btnChangeShiny.addEventListener("click", function() {
+        imgPokemon.src = imgPokemon.getAttribute("data-shiny-url");
+    });
 
     selectPokemon.addEventListener("change", async function(event) {
     // 2. En función de la opción escogida, 'montaremos' una URL
@@ -61,6 +67,13 @@
     titlePokemon.textContent = data.name;
     imgPokemon.src = data.sprites.front_default;
     imgPokemon.classList.remove("d-none");
+
+    // 4. Nos falta habilitar la posibilidad de cambiarlo a Shiny. 
+
+     // 4.1 Guardar el valor de data.sprites.front_shiny en el atributo data-shiny-url del tag <img>
+     
+     imgPokemon.setAttribute("data-shiny-url", data.sprites.front_shiny);
+     // 4.2 Cuando le demos al botón "change to shiny" debemos actualizar de nuevo la propiedad .src de imgPokemon con el valor de data-shiny-url
     })
 
 
