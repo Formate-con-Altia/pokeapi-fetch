@@ -33,13 +33,38 @@
 </body>
 <script>
     // 1. Cuando cambie el valor del selector, tenemos que detectar que opción hemos escogido. Probad que sois capaces de recuperar el valor seleccionado por el usuario con un console.log
+    const selectPokemon = document.querySelector('#select-pokemon');
 
+    const titlePokemon = document.querySelector('.card-title');
+    const imgPokemon = document.querySelector(".card-img-top");
+
+    selectPokemon.addEventListener("change", async function(event) {
     // 2. En función de la opción escogida, 'montaremos' una URL
-    // https://pokeapi.co/api/v2/pokemon/pikachu
+    // https://pokeapi.co/api/v2/pokemon/pikachu // ruta dinámica
     // https://pokeapi.co/api/v2/pokemon/luxio
+
+    const pokemonName = event.target.value; // me ayuda a clarificar que tipo de información contiene event.target.value
+
+    // montar la url para ejecutar la función fetch
+    const url = `https://pokeapi.co/api/v2/pokemon/${pokemonName}`;
+
+    console.log("🚀 ~ selectPokemon.addEventListener ~ url:", url);
+
+    const response = await fetch(url);
+
+    const data = await response.json();
+    console.log("🚀 ~ selectPokemon.addEventListener ~ data:", data)
+    
 
     // 3. Utilizar la función fetch para hacer la llamada a esa URL
     // y procesar los datos. Significa, asignar al <h5> del DOM el nombre del pokemon que hemos recuperado de la llamada. Y en la etiqueta <img> debemos establecer el atricuto 'src' con el valor de la URL donde se ubica la imagen del pokemon
+    titlePokemon.textContent = data.name;
+    imgPokemon.src = data.sprites.front_default;
+    imgPokemon.classList.remove("d-none");
+    })
+
+
+
 </script>
 
 </html>
